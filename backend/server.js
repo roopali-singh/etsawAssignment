@@ -12,7 +12,6 @@ app.use(express.urlencoded({ extended: true }));
 mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/etsaw_react", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  // useCreateIndex: true,
 });
 
 app.get("/api/productList", (request, response) => {

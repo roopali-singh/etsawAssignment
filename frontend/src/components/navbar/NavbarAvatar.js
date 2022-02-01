@@ -63,7 +63,6 @@ function NavbarAvatar() {
           aria-label="cart"
           aria-controls="menu-appbar"
           aria-haspopup="true"
-          // onClick={handleMenu}
           color="inherit"
           sx={{ m: 1 }}
         >

@@ -46,7 +46,6 @@ function OrderPlacedPage() {
         <Box
           sx={{
             width: 1,
-            // height: "100%",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -60,7 +59,6 @@ function OrderPlacedPage() {
             onClick={backToHome}
             variant="contained"
             sx={{
-              // mb: 1,
               mt: 2,
               backgroundColor: "#DEBB99",
             }}

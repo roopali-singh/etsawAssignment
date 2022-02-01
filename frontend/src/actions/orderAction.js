@@ -17,9 +17,6 @@ export const createOrder =
     });
 
     const loggedInUser = getState().user.loggedInUser;
-    // const {
-    //   userSignIn: { loggedInUser },
-    // } = getState();
     try {
       const { data } = await axios.post(
         "/api/orders/createOrder",

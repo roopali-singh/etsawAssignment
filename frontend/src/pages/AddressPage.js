@@ -8,7 +8,6 @@ import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { saveShippingAddress } from "../actions/cartActions";
-// import OrderPlacedDialog from "../components/order/OrderPlacedDialog";
 import { createOrder, resetOrderCreated } from "../actions/orderAction";
 import { useHistory } from "react-router-dom";
 import ErrorBox from "../components/error/ErrorBox";
@@ -23,7 +22,6 @@ function AddressPage() {
   const { loggedInUser } = user;
   const order = useSelector((state) => state.order);
   const { createdOrder, loading, success, error } = order;
-  // const [openDialog, setOpenDialog] = useState(false);
   const [address, setAddress] = useState(shippingAddress?.address);
   const [city, setCity] = useState(shippingAddress?.city);
   const [postalCode, setPostalCode] = useState(shippingAddress?.postalCode);
@@ -33,7 +31,6 @@ function AddressPage() {
     event.preventDefault();
     dispatch(saveShippingAddress({ address, city, postalCode, country }));
     dispatch(createOrder({ ...cart, orderItems: cart?.cartItems }, orderTotal));
-    // setOpenDialog(true);
   };
 
   useEffect(() => {

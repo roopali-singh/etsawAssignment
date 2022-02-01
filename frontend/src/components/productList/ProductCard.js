@@ -30,7 +30,6 @@ function ProductCard({ product, forCart, cartItemId }) {
   };
 
   useEffect(() => {
-    // and the qty !== previousQty
     if (forCart) {
       addToCartHandler(cartItemId, qty);
     }

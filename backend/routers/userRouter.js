@@ -6,15 +6,6 @@ import { generateToken } from "../utils.js";
 
 const userRouter = express.Router();
 
-// userRouter.get(
-//   "/seed",
-//   expressAsyncHandler(
-//     async((request, response) => {
-//       response.send("Created User");
-//     })
-//   )
-// );
-
 userRouter.post(
   "/signIn",
   expressAsyncHandler(async (request, response) => {
