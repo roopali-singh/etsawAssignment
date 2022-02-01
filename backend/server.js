@@ -21,8 +21,12 @@ app.get("/api/productList", (request, response) => {
 app.use("/api/users", userRouter);
 app.use("/api/orders", orderRouter);
 
-app.get("/", (request, response) => {
-  response.send("Server is Ready");
+///////////// Required for publishing to heroku /////////////
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, "/frontend/build")));
+
+app.get("*", (request, response) => {
+  response.sendFile(path.join(__dirname, "/frontend/build/index.html"));
 });
 
 app.use((error, request, response, next) => {
