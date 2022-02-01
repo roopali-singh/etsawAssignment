@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -7,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import { addToCart } from "../../actions/cartActions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 function OrderPlacedOrderList({ item }) {
   const dispatch = useDispatch();
