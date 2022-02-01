@@ -6,15 +6,15 @@ import { Divider } from "@mui/material";
 function OrderPlacedAddress() {
   const user = useSelector((state) => state.user);
   const { loggedInUser } = user;
-  const cart = useSelector((state) => state.cart);
-  const { shippingAddress } = cart;
+  const order = useSelector((state) => state.order);
+  const { orderDetails } = order;
 
   const OrderAddressInfo = [
     { label: "Email", value: loggedInUser?.email },
-    { label: "Address", value: shippingAddress?.address },
-    { label: "City", value: shippingAddress?.city },
-    { label: "Postal Code", value: shippingAddress?.postalCode },
-    { label: "Country", value: shippingAddress?.country },
+    { label: "Address", value: orderDetails?.shippingAddress?.address },
+    { label: "City", value: orderDetails?.shippingAddress?.city },
+    { label: "Postal Code", value: orderDetails?.shippingAddress?.postalCode },
+    { label: "Country", value: orderDetails?.shippingAddress?.country },
   ];
 
   return (

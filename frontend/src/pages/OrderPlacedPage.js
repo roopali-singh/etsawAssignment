@@ -15,8 +15,8 @@ function OrderPlacedPage() {
   var { id } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
-  const cart = useSelector((state) => state.cart);
-  const { cartItems, orderTotal } = cart;
+  const order = useSelector((state) => state.order);
+  const { orderDetails } = order;
 
   useEffect(() => {
     dispatch(fetchOrderDetails(id));
@@ -94,12 +94,12 @@ function OrderPlacedPage() {
             >
               <Typography sx={{ fontSize: 42, fontWeight: 600, mb: 2 }}>
                 Order Total: ${" "}
-                {orderTotal?.toLocaleString("en-US", {
+                {orderDetails?.orderTotal?.toLocaleString("en-US", {
                   maximumFractionDigits: 2,
                 })}
               </Typography>
-              {cartItems?.map((item) => (
-                <OrderPlacedOrderList item={item} key={item?.product_id} />
+              {orderDetails?.orderItems?.map((item) => (
+                <OrderPlacedOrderList item={item} key={item?._id} />
               ))}
             </Box>
           </Box>

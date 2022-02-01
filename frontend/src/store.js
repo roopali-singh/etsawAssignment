@@ -20,6 +20,10 @@ const initialState = {
       ? JSON.parse(localStorage.getItem("loggedInUser"))
       : null,
   },
+  order: {
+    createdOrders: null,
+    orderDetails: null,
+  },
 };
 
 const reducer = combineReducers({

@@ -12,7 +12,6 @@ import { saveShippingAddress } from "../actions/cartActions";
 import { createOrder, resetOrderCreated } from "../actions/orderAction";
 import { useHistory } from "react-router-dom";
 import ErrorBox from "../components/error/ErrorBox";
-import { ORDER_CREATE_RESET } from "../constants/orderConstants";
 
 function AddressPage() {
   const cart = useSelector((state) => state.cart);
@@ -24,7 +23,6 @@ function AddressPage() {
   const { loggedInUser } = user;
   const order = useSelector((state) => state.order);
   const { createdOrder, loading, success, error } = order;
-
   // const [openDialog, setOpenDialog] = useState(false);
   const [address, setAddress] = useState(shippingAddress?.address);
   const [city, setCity] = useState(shippingAddress?.city);
@@ -39,14 +37,9 @@ function AddressPage() {
   };
 
   useEffect(() => {
-    console.log("1=> ", createdOrder?._id);
     if (success) {
-      console.log("2=> ", createdOrder?._id);
-      history.replace(`/order/${createdOrder?._id}`);
-      console.log("3=> ", createdOrder?._id);
-      // dispatch(resetOrderCreated());
-      dispatch({ type: ORDER_CREATE_RESET });
-      console.log("4=> ", createdOrder?._id);
+      history.replace(`/order/${createdOrder?.createdOrder?._id}`);
+      dispatch(resetOrderCreated());
     }
   }, [success]);
 

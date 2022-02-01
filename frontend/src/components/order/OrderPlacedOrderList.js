@@ -6,9 +6,8 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
-import ProductCardQty from "../productList/ProductCardQty";
-import { addToCart, removeFromCart } from "../../actions/cartActions";
-import { useDispatch } from "react-redux";
+import { addToCart } from "../../actions/cartActions";
+import { useDispatch, useSelector } from "react-redux";
 
 function OrderPlacedOrderList({ item }) {
   const dispatch = useDispatch();

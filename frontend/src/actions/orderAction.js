@@ -39,6 +39,8 @@ export const createOrder =
       dispatch({
         type: EMPTY_CART,
       });
+
+      localStorage.removeItem("cartItems");
     } catch (error) {
       dispatch({
         type: ORDER_CREATE_FAIL,
@@ -50,19 +52,19 @@ export const createOrder =
     }
   };
 
-// export const resetOrderCreated = () => (dispatch) => {
-//   dispatch({
-//     type: ORDER_CREATE_RESET,
-//   });
-// };
+export const resetOrderCreated = () => (dispatch) => {
+  dispatch({
+    type: ORDER_CREATE_RESET,
+  });
+};
 
-export const fetchOrderDetails = (orderId) => async (dispatch) => {
+export const fetchOrderDetails = (id) => async (dispatch) => {
   dispatch({
     type: ORDER_DETAILS_REQUEST,
   });
 
   try {
-    const { data } = await axios.post(`/orderDetails/${orderId}`);
+    const { data } = await axios.get(`/api/orders/${id}`);
 
     dispatch({
       type: ORDER_DETAILS_SUCCESS,

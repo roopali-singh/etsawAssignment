@@ -28,12 +28,11 @@ orderRouter.post(
 );
 
 orderRouter.get(
-  "/orderDetails/:id",
+  "/:id",
   expressAsyncHandler(async (request, response) => {
     const userOrderDetails = await Order.findById(request.params.id);
     if (userOrderDetails) {
-      response.send({ userOrderDetails });
-      console.log({ userOrderDetails });
+      response.send(userOrderDetails);
     } else {
       response.status(404).send({ message: "Order Not Found" });
     }
