@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, forwardRef } from "react";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
@@ -8,19 +8,35 @@ import IconButton from "@mui/material/IconButton";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 import Box from "@mui/material/Box";
 import ProductCardQty from "./ProductCardQty";
 import { addToCart, removeFromCart } from "../../actions/cartActions";
 import { useDispatch } from "react-redux";
 
+const Alert = forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 function ProductCard({ product, forCart, cartItemId }) {
   const dispatch = useDispatch();
   const [qty, setQty] = useState(forCart ? product?.qty : 1);
+  const [open, setOpen] = useState(false);
 
   const addToCartHandler = (productId, quantity) => {
     if (productId) {
       dispatch(addToCart(productId, quantity));
+      !forCart && setOpen(true);
     }
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
   };
 
   const removeFromCartHandler = (productId) => {
@@ -105,13 +121,28 @@ function ProductCard({ product, forCart, cartItemId }) {
           }}
         >
           {!forCart ? (
-            <IconButton
-              color="secondary"
-              aria-label="add_to_cart"
-              onClick={() => addToCartHandler(product?.id, qty)}
-            >
-              <AddShoppingCartIcon style={{ color: "#B57245" }} />
-            </IconButton>
+            <>
+              <IconButton
+                color="secondary"
+                aria-label="add_to_cart"
+                onClick={() => addToCartHandler(product?.id, qty)}
+              >
+                <AddShoppingCartIcon style={{ color: "#B57245" }} />
+              </IconButton>
+              <Snackbar
+                open={open}
+                autoHideDuration={2000}
+                onClose={handleClose}
+              >
+                <Alert
+                  onClose={handleClose}
+                  severity="success"
+                  sx={{ width: "100%" }}
+                >
+                  Product added to cart!
+                </Alert>
+              </Snackbar>
+            </>
           ) : (
             <Stack direction="row" spacing={2} sx={{ m: 1 }}>
               <Button
