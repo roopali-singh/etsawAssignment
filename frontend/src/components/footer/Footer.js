@@ -10,7 +10,7 @@ function Footer() {
       sx={{ mt: 5 }}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
+      <Link color="inherit" href="https://etsawmango.herokuapp.com/">
         Mango
       </Link>{" "}
       {new Date().getFullYear()}
