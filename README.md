@@ -21,7 +21,7 @@ Tech Used:
 - Express && Node (for backend)
 - React (for frontend)
 - Redux (State Management Library)
-- JWT (for authentication)
+- JWT (for authorization)
 - Bcrypt (for passwords)
 - Material-UI (as Design Library)
 ```
