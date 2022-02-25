@@ -4,8 +4,10 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { useHistory } from "react-router-dom";
 
 function NavbarBoxXS({ pages }) {
+  const history = useHistory();
   const [anchorElNav, setAnchorElNav] = useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -13,6 +15,7 @@ function NavbarBoxXS({ pages }) {
   };
 
   const handleCloseNavMenu = () => {
+    history.push("/");
     setAnchorElNav(null);
   };
 
